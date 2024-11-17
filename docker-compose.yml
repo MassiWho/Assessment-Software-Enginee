@@ -1,0 +1,15 @@
+services:
+  front-end:
+    image: node:current-alpine
+    ports:
+      - '${PORT-80}:5173'
+    volumes:
+      - './front-end:/app'
+    environment:
+      - WDS_SOCKET_PORT=${PORT-80}
+      - DEBUG=${DEBUG-true}
+    env_file:
+      - ".env"
+    user: "${UID-1000}:${GID-1000}"
+    working_dir: "/app"
+    command: npm run dev -- --host 0.0.0.0
