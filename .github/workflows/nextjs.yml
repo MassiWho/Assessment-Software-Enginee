@@ -33,7 +33,7 @@ jobs:
       run:
         working-directory: front-end
     env:
-      VITE_UNSPLASH_API_BASE_URL: ${{ secrets.VITE_UNSPLASH_API_BASE_URL }}
+      VITE_UNSPLASH_API_BASE_URL: ${{ env.VITE_UNSPLASH_API_BASE_URL }}
       VITE_UNSPLASH_ACCESS_KEY: ${{ secrets.VITE_UNSPLASH_ACCESS_KEY }}
     steps:
       - name: Checkout
