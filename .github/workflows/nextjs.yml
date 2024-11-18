@@ -75,9 +75,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('front-end/package-lock.json', 'front-end/yarn.lock') }}-
       - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} --prefix ./front-end install
+        run: ${{ steps.detect-package-manager.outputs.manager }} install
       - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} npm run build --prefix ./front-end
+        run: ${{ steps.detect-package-manager.outputs.runner }} npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
