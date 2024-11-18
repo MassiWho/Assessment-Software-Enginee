@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import React, { useState, Dispatch, SetStateAction } from 'react';
 import { Navbar as NavbarBootstrap, Container, Form, FormControl, Button } from 'react-bootstrap';
 
-export const Navbar: React.FC = ({
+export const Navbar: React.FC<{ keyword: [string, Dispatch<SetStateAction<string>>] }> = ({
   keyword: [keyword, setKeyword]
 }) => {
   const [searchQuery, setSearchQuery] = useState(keyword);

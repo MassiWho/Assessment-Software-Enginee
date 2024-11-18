@@ -22,11 +22,11 @@ interface UnsplashSearchResponse {
   results: UnsplashPhoto[];
 }
 
-export async function search_photos(query: string): Promise<UnsplashSearchResponse> {
+export async function search_photos(query: string, page: number): Promise<UnsplashSearchResponse> {
   try {
     const result: AxiosResponse<UnsplashSearchResponse> = await axios.get(
       `${import.meta.env.VITE_UNSPLASH_API_BASE_URL as string}/search/photos`,
-      { params: { query } }
+      { params: { query, page } }
     );
 
     return result.data;
