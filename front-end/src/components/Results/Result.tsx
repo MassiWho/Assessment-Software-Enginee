@@ -3,7 +3,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import Image from 'react-bootstrap/Image';
 import './Result.css';
 
-export const Result: React.FC<{ data: { urls: { thumb: string }; author: string } }> = ({
+export const Result: React.FC<{ data: { urls: { thumb: string, full: string }; user: { username: string }; likes: number } }> = ({
   data,
 }) => {
   const [loading, setLoading] = useState(true);
@@ -35,9 +35,8 @@ export const Result: React.FC<{ data: { urls: { thumb: string }; author: string 
           <div className="fullscreen-image-container" onClick={(e) => e.stopPropagation()}>
             {loadingFull && <Spinner />}
             <Image
-              className={`${loadingFull ? 'hidden' : ''}`}
+              className={`fullscreen-image ${loadingFull ? 'hidden' : ''}`}
               src={data.urls.full}
-              className="fullscreen-image"
               onClick={closeFullscreen}
               onLoad={() => setLoadingFull(false)}
               onError={() => setLoadingFull(false)}

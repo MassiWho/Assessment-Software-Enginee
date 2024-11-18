@@ -47,6 +47,7 @@ const App: React.FC = () => {
             variant="secondary"
             onClick={goToPreviousPage}
             disabled={currentPage === 1}
+            className="me-2"
           >
             Precedente
           </Button>
