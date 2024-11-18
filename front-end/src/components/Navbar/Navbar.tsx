@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Navbar as NavbarBootstrap, Container, Form, FormControl, Button } from 'react-bootstrap';
-import { search_photos } from 'unsplash-api'; 
 
 export const Navbar: React.FC = ({
-  keyword: [keyword, setKeyword], results: [searchResults, setSearchResults]
+  keyword: [keyword, setKeyword]
 }) => {
   const [searchQuery, setSearchQuery] = useState(keyword);
 
@@ -13,17 +12,8 @@ export const Navbar: React.FC = ({
 
   const handleSubmit = (event: React.FormEvent): void => {
     event.preventDefault();
-
     setKeyword(searchQuery);
   };
-
-  useEffect(() => {
-    search_photos(searchQuery).then(results => {
-      setSearchResults(results);
-    }).catch(error => {
-      // TODO: mostra errore
-    });
-  }, [keyword]);
 
   return (
       <NavbarBootstrap bg="dark" variant="dark" expand="lg">
