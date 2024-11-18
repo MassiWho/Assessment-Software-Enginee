@@ -7,6 +7,7 @@ export const Result: React.FC<{ data: { urls: { thumb: string }; author: string 
   data,
 }) => {
   const [loading, setLoading] = useState(true);
+  const [loadingFull, setLoadingFull] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   function handleClick() {
@@ -32,9 +33,18 @@ export const Result: React.FC<{ data: { urls: { thumb: string }; author: string 
       {isFullscreen && (
         <div className="fullscreen-overlay" onClick={closeFullscreen}>
           <div className="fullscreen-image-container" onClick={(e) => e.stopPropagation()}>
-            <Image src={data.urls.thumb} className="fullscreen-image"/>
+            {loadingFull && <Spinner />}
+            <Image
+              className={`${loadingFull ? 'hidden' : ''}`}
+              src={data.urls.full}
+              className="fullscreen-image"
+              onClick={closeFullscreen}
+              onLoad={() => setLoadingFull(false)}
+              onError={() => setLoadingFull(false)}
+            />
             <div className="image-details">
-              <p>{`Author: ${data.author}`}</p>
+              <p>{`Author: ${data.user.username}`}</p>
+              <p>{`Likes: ${data.likes}`}</p>
             </div>
           </div>
         </div>
