@@ -14,7 +14,7 @@ export const Results: React.FC<{
       {results?.length === 0 && <Spinner className="mt-5" />}
       <div className="mt-5 container">
         <div className="row g-3 justify-content-center">
-          {results?.map((item, index) => (
+          {results?.map((item: any, index: number) => (
             <div key={index} className="col-auto">
               <div className="image-wrapper">
                 <Result data={item} />
