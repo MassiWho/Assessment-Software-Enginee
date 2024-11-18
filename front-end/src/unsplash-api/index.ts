@@ -1,0 +1,1 @@
+export { search_photos } from './search.tsx';
